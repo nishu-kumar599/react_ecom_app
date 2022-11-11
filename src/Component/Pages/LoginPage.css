@@ -1,0 +1,9 @@
+button.changevalue {
+    margin-top: 20px;
+    padding: 5px 37px;
+    border: 0px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+}

@@ -1,0 +1,42 @@
+body{
+    background-color: #fff;
+}
+.wrapper h1{
+    margin-top:30px;
+    margin-bottom:30px;
+    font-size: 40px;
+    text-align: center;
+}
+button.text-center {
+    padding: 5px 30px;
+    border-radius: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+input{
+    margin-top :30px!important;
+}
+input {
+    margin-top: 30px;
+}
+
+.row{
+    justify-content: center;
+}
+input {
+    width: 80%;
+}
+form{
+    padding-bottom: 30px;
+}
+.Signup{
+    text-decoration: none;
+    color: black;
+}
+button{
+    margin-top:30px;
+}
+.col-sm-5.pt-30.bg-black {
+    padding: 30px;
+}
