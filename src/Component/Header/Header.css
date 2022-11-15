@@ -1,0 +1,33 @@
+.heading {
+    text-align: left;
+}
+.header-section{
+padding-top:15px;
+padding-bottom:15px;
+}
+.header{
+    background-color: gray;
+}
+.cart_images img {
+    width: 30px;
+    height: 30px;
+}
+.box {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    margin-right: 0px;
+
+    border-radius: 20px;
+}
+.box button{
+    margin-top:0px!important;
+}
+.cart_images {
+    text-align: end;
+    line-height: 20px;
+    font-weight: 700;
+}
+.header-section button{
+    margin-top:10px!important;
+}

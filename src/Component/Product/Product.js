@@ -1,9 +1,11 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Product.css";
 import { useNavigate } from "react-router-dom";
 
 const Product = (props) => {
   const Navigate = useNavigate();
-  // console.log(props);
+
   const submitHandle = () => {
     Navigate({ pathname: `/Product/${props.id}` }, { replace: true });
   };

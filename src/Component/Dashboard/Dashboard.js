@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Product from "../Product/Product";
+import "./Dashboard.css";
 import axios from "axios";
 const Dashboard = () => {
   const [user, setUser] = useState([]);
 
   const fetchData = async () => {
     const data = await axios.get("https://dummyjson.com/products/");
-    // console.log(data);
+
     if (data?.data?.products) {
       setUser(data?.data?.products);
     }
@@ -15,7 +16,6 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  // console.log(user);
   return (
     <main>
       {user.map((product, index) => (

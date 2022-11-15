@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-// import createContext from "react";
-// const UserContext = createContext();
+import { useNavigate, useParams } from "react-router-dom";
+
 const ProductDetail = () => {
-  const [cart, setCart] = useState("");
-  const addToCart = (product) => {
-    setCart(product);
-  };
-  console.log(cart);
-
-  const [image, setImage] = useState([]);
-
   const [productData, setProductData] = useState(null);
 
   const { id } = useParams();
-  // console.log(id);
+
   const fetchData = async () => {
     const data = await axios.get(`https://dummyjson.com/products/${id}`);
 
@@ -27,6 +19,11 @@ const ProductDetail = () => {
     fetchData();
   }, []);
 
+  const navigate = useNavigate();
+
+  const submitHandle = () => {
+    navigate({ pathname: "/Product/AddCart" }, { replace: false });
+  };
   return (
     <main>
       <div className="container product_detail">
@@ -77,9 +74,8 @@ const ProductDetail = () => {
                   <br />
                   {productData.description}
                 </p>
-                <button onClick={() => addToCart(productData.id, "product")}>
-                  Add To Cart
-                </button>
+
+                <button onClick={submitHandle}>Add To Cart</button>
               </div>
             </div>
           )}
@@ -88,4 +84,5 @@ const ProductDetail = () => {
     </main>
   );
 };
+
 export default ProductDetail;
