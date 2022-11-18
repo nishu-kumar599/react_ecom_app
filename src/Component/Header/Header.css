@@ -28,6 +28,10 @@ padding-bottom:15px;
     line-height: 20px;
     font-weight: 700;
 }
-.header-section button{
-    margin-top:10px!important;
+.header-section button {
+    margin-top: 10px!important;
+    padding: 8px 15px;
+}
+.add_to_cart_button button{
+    padding: 8px 10px;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Product from "../Product/Product";
-import "./Dashboard.css";
+import "../Dashboard/Dashboard.css";
 import axios from "axios";
 const Dashboard = () => {
   const [user, setUser] = useState([]);
@@ -21,7 +21,7 @@ const Dashboard = () => {
       {user.map((product, index) => (
         <Product
           key={index}
-          images={product.images[0]}
+          images={product.thumbnail}
           title={product.title}
           description={product.description}
           price={product.price}

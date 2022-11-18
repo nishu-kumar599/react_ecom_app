@@ -1,8 +1,10 @@
-import "./Header.css";
+import "../Header/Header.css";
 import { useNavigate } from "react-router-dom";
-import AddCart from "../Context/AddCart";
+import CartContext from "../Store/CartContext";
+import { useContext } from "react";
 
-const Header = () => {
+const Header = (props) => {
+  const { cartItems } = useContext(CartContext);
   const navigate = useNavigate();
 
   const changeProduct = () => {
@@ -11,6 +13,7 @@ const Header = () => {
   const cartSubmit = () => {
     navigate({ pathname: "/Product/AddCart" }, { replace: false });
   };
+
   return (
     <>
       <header>
@@ -30,10 +33,13 @@ const Header = () => {
                       <button>Logout</button>
                     </div>
                     <div className="col-sm-4">
-                      <div className="box">
+                      <div className="box add_to_cart_button">
                         <button onClick={cartSubmit}>
                           <img src={require("./images.png")} alt="cartimage" />
-                          &nbsp;&nbsp; Your cart
+                          &nbsp; Your cart &nbsp;
+                          <span className="bg-black text-light rounded-5 px-3 py-2">
+                            {cartItems.length}
+                          </span>
                         </button>
                       </div>
                     </div>

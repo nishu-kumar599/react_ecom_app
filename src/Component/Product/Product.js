@@ -1,19 +1,19 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Product.css";
+import "../Product/Product.css";
 import { useNavigate } from "react-router-dom";
 
 const Product = (props) => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const submitHandle = () => {
-    Navigate({ pathname: `/Product/${props.id}` }, { replace: true });
+    navigate({ pathname: `/Product/${props.id}` }, { replace: false });
   };
   return (
     <div className="product" onClick={submitHandle}>
       <div className="wrapper">
         <div className="row">
-          <div className="col-sm-12 product-box" id={props.key}>
+          <div className="col-sm-12 product-box" key={props.key}>
             <span>{props.id}</span>
             <img src={props.images} alt={props.title} />
             <h1>{props.title}</h1>

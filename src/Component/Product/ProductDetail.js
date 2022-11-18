@@ -1,10 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import "../Product/Product.css";
+import { useParams } from "react-router-dom";
+import CartContext from "../Store/CartContext";
 
 const ProductDetail = () => {
+  const { addToCart } = useContext(CartContext);
   const [productData, setProductData] = useState(null);
+  const [image, setImage] = useState(0);
+  const changeImage = (e) => {
+    const images = e.target.src;
+
+    if (images) {
+      setImage(images);
+    }
+  };
 
   const { id } = useParams();
 
@@ -19,35 +30,30 @@ const ProductDetail = () => {
     fetchData();
   }, []);
 
-  const navigate = useNavigate();
-
-  const submitHandle = () => {
-    navigate({ pathname: "/Product/AddCart" }, { replace: false });
-  };
   return (
     <main>
       <div className="container product_detail">
         <div className="wrapper">
           {productData != null && (
             <div className="row product_image">
-              <div className="col-sm-5">
-                <img src={productData.thumbnail} alt={productData.title} />
+              <div className="col-sm-6 product_big_image">
+                <img
+                  src={image !== 0 ? image : productData.thumbnail}
+                  alt={productData.title}
+                />
                 <div className="row product_thumbnail_images">
-                  <div className="col-sm-3">
-                    <img src={productData.images[0]} alt={productData.title} />
-                  </div>
-                  <div className="col-sm-3">
-                    <img src={productData.images[1]} alt={productData.title} />
-                  </div>
-                  <div className="col-sm-3">
-                    <img src={productData.images[2]} alt={productData.title} />
-                  </div>
-                  <div className="col-sm-3">
-                    <img src={productData.images[3]} alt={productData.title} />
-                  </div>
+                  {productData.images.map((img, index) => (
+                    <div className="col-sm-3" key={index}>
+                      <img
+                        src={img}
+                        alt={productData.title}
+                        onClick={changeImage}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="col-sm-5 product_details">
+              <div className="col-sm-6 product_details">
                 <h2>
                   {productData.brand}/{productData.category}
                 </h2>
@@ -75,7 +81,9 @@ const ProductDetail = () => {
                   {productData.description}
                 </p>
 
-                <button onClick={submitHandle}>Add To Cart</button>
+                <button onClick={() => addToCart(productData)}>
+                  Add To Cart
+                </button>
               </div>
             </div>
           )}
