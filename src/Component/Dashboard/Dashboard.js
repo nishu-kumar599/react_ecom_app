@@ -16,6 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <main>
       {user.map((product, index) => (

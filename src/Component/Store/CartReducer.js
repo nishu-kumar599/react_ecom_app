@@ -16,17 +16,23 @@ const CartReducer = (state, action) => {
     }
 
     case INCREMENT: {
-      console.log("This is increments", action.payload);
-      const totalAmount = action.payload.price;
-      console.log(totalAmount);
+      console.log("this is items", state.cartItems);
+      // console.log("this is payloadss", action.payload);
+      const found = state.cartItems.findIndex(
+        (obj) => obj.id === action.payload.id
+      );
+      console.log(found.quantity);
+      const updateCart = +found.quantity + 1;
+      console.log(updateCart);
+
       return {
         ...state,
-        cartItems: [...state.cartItems, action.payload],
+        cartItems: [...state.cartItems],
       };
     }
 
     case DECREMENT: {
-      for (let i = 0; i < state.cartItems?.length; i++) {
+      for (let i = 0; i < state.cartItems?.id; i++) {
         if (Number(state.cartItems[i].id) === Number(action.payload)) {
           state.cartItems.splice(i, 1);
           break;

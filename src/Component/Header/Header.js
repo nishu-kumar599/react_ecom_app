@@ -2,6 +2,7 @@ import "../Header/Header.css";
 import { useNavigate } from "react-router-dom";
 import CartContext from "../Store/CartContext";
 import { useContext } from "react";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Header = (props) => {
   const { cartItems } = useContext(CartContext);
@@ -14,6 +15,13 @@ const Header = (props) => {
     navigate({ pathname: "/Product/AddCart" }, { replace: false });
   };
 
+  const onChangePage = () => {
+    navigate({ pathname: "/Product" }, { replace: false });
+  };
+  const onChangeHandle = () => {
+    navigate({ pathname: "/Product" }, { replace: false });
+  };
+
   return (
     <>
       <header>
@@ -22,7 +30,12 @@ const Header = (props) => {
             <div className="wrapper">
               <div className="row">
                 <div className="col-sm-6">
-                  <h1 className="heading text-light">E-com</h1>
+                  <h1
+                    className="heading site_logo text-light"
+                    onClick={onChangeHandle}
+                  >
+                    E-com
+                  </h1>
                 </div>
                 <div className="col-sm-6 cart_images text-light ">
                   <div className="row">
@@ -35,8 +48,15 @@ const Header = (props) => {
                     <div className="col-sm-4">
                       <div className="box add_to_cart_button">
                         <button onClick={cartSubmit}>
-                          <img src={require("./images.png")} alt="cartimage" />
-                          &nbsp; Your cart &nbsp;
+                          <FiShoppingCart
+                            onClick={onChangePage}
+                          ></FiShoppingCart>
+                          {/* <img
+                            src={require("./images.png")}
+                            alt="cartimage"
+                            onClick={onChangePage}
+                          /> */}
+                          Your cart
                           <span className="bg-black text-light rounded-5 px-3 py-2">
                             {cartItems.length}
                           </span>

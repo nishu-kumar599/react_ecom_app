@@ -35,3 +35,9 @@ padding-bottom:15px;
 .add_to_cart_button button{
     padding: 8px 10px;
 }
+
+h1.heading.site_logo.text-light {
+    justify-content: flex-end;
+    width: fit-content;
+    cursor: pointer;
+}
