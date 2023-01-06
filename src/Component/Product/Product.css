@@ -1,59 +1,50 @@
-.product {
-    width: 33%!important;
-    text-align: center!important;
-    padding:25px 35px!important;
-    float: left;
-}
 .product-box {
     background: #000000d9;
     margin-top: 40px;
     border-radius: 19px;
+    text-align: center;
+    overflow: hidden;
 }
 .product-box img {
-    width: 50%;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background-position: center;
     background-size: cover;
     object-fit: cover;
 }
-.product-box {
-    background: #000000d9;
-    margin-top: 40px;
-    border-radius: 19px;
-    padding: 46px 10px;
-    height: 506px;
-}
+
 .product-box h1,.product-box p,.product-box h5{
     color: #fff;
 }
 .product-box h1 {
-    font-size: 20px;
-    margin: 30px 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    font-size: 16px;
+    margin: 18px 0px;
 }
 .product-box p{
-    font-size: 14px;
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
 }
- button{
-    border:0px;
-    color: #000;
-    font-size: 15px;
-    padding:10px 20px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 12px!important;
-    margin-top:20px!important;
+.font-weight-bold{
+    font-weight:bold;
 }
 .product_detail{
     text-align: left;
 }
 .product_thumbnail_images img{
-width:100%;
-height:100%;
+   width:100%;
+   height:100%;
 }
 .product_image img{
     width:100%;
    
-    margin:40px 0 20px;
     background-size: cover;
     object-fit: cover;
 }
@@ -85,23 +76,12 @@ height:100%;
 .product_thumbnail_images img {
     cursor: pointer;
     height: 120px!important;
-
+    width: 120px;
+    object-fit: cover;
 }
-.add_to_cart_section form{
-    margin-top:25px;
+input#Amount {
+    margin-left: 10px;
 }
-.icon_right {
-    position: absolute;
-    top: 50%;
-    right: 53%;
-    transform: rotate(267deg);
-    cursor: pointer;
-}
-.icon_left {
-    position: absolute;
-    top: 50%;
-    left: 9%;
-    z-index: 99;
-    transform: rotate(266deg);
-    cursor: pointer;
+.product_thumbnail_images{
+    row-gap: 20px;
 }

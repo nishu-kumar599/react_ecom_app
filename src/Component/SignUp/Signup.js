@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Component/SignUp/Signup.css";
+import "../../Component/SignUp/SignUp.css";
 import axios from "axios";
 
 const Signup = () => {

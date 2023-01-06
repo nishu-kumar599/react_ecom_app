@@ -12,28 +12,23 @@ padding-bottom:15px;
     width: 30px;
     height: 30px;
 }
-.box {
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: 0 auto;
-    margin-right: 0px;
-
-    border-radius: 20px;
+.cartTotal{
+    padding: 1px 8px;
+   
 }
 .box button{
     margin-top:0px!important;
 }
 .cart_images {
-    text-align: end;
     line-height: 20px;
     font-weight: 700;
 }
-.header-section button {
-    margin-top: 10px!important;
-    padding: 8px 15px;
-}
-.add_to_cart_button button{
-    padding: 8px 10px;
+
+.add_to_cart_button button {
+   
+    display: flex;
+    column-gap: 9px;
+    align-items: center;
 }
 
 h1.heading.site_logo.text-light {

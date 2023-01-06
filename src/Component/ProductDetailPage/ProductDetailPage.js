@@ -1,19 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import "../Product/Product.css";
 import { useParams } from "react-router-dom";
 import { GlassMagnifier } from "react-image-magnifiers";
-import { FcCollapse, FcExpand } from "react-icons/fc";
-import CartContext from "../Store/CartContext";
-
-const ProductDetail = () => {
-  const { addToCart } = useContext(CartContext);
+// import { FcCollapse, FcExpand } from "react-icons/fc";
+import CartForm from "../Cart/CartForm";
+import CartContext from "../../Store/CartContext";
+import { useContext } from "react";
+const ProductDetailPage = () => {
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState(0);
   const { id } = useParams();
-  const [value, setValue] = useState(1);
-
+  const cart = useContext(CartContext);
   const changeImage = (e) => {
     const images = e.target.src;
     if (images) {
@@ -31,33 +29,35 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchData();
   });
-  const onCartValue = (e) => {
-    const val = e.target.value;
-    if (val) {
-      setValue(val);
-    }
+
+  const addToCartHandler = (amount) => {
+    cart.addToCart({
+      id: productData.id,
+      amount: amount,
+      title: productData.title,
+      price: productData.price,
+      image: productData.thumbnail,
+    });
   };
 
   return (
     <main>
-      <div className="container product_detail">
+      <div className="container product_detail mt-4">
         <div className="wrapper">
           {productData != null && (
             <div className="row product_image">
               <div className="col-sm-6 product_big_image">
                 <span className="icon_left">
-                  <FcCollapse></FcCollapse>
+                  {/* <FcCollapse></FcCollapse> */}
                 </span>
                 <GlassMagnifier
                   imageSrc={image !== 0 ? image : productData.thumbnail}
                   imageAlt={productData.title}
                 />
-                <span className="icon_right">
-                  <FcExpand />
-                </span>
-                <div className="row product_thumbnail_images">
+                <span className="icon_right">{/* <FcExpand /> */}</span>
+                <div className="row product_thumbnail_images mt-3">
                   {productData.images.map((img, index) => (
-                    <div className="col-sm-3" key={index}>
+                    <div className="col-sm-3 text-center" key={index}>
                       <img
                         src={img}
                         alt={productData.title}
@@ -96,29 +96,7 @@ const ProductDetail = () => {
                 </p>
                 <div className="row add_to_cart_section">
                   <div className="col-sm-12 d-flex  ">
-                    <form>
-                      <input
-                        onClick={onCartValue}
-                        placeholder={value}
-                        type="number"
-                        min={1}
-                        max={5}
-                      />
-                    </form>
-
-                    <button
-                      onClick={() =>
-                        addToCart({
-                          id: productData.id,
-                          quantity: value,
-                          title: productData.title,
-                          price: productData.price,
-                          image: productData.thumbnail,
-                        })
-                      }
-                    >
-                      Add To Cart
-                    </button>
+                    <CartForm onAddToCart={addToCartHandler} />
                   </div>
                 </div>
               </div>
@@ -130,4 +108,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default ProductDetailPage;

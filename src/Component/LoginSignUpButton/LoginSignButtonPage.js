@@ -3,7 +3,7 @@ import SignUp from "../SignUp/Signup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 
-const LoginPage = () => {
+const LoginSignButtonPage = () => {
   const [login, setLogin] = useState(false);
   const SignupHandle = () => {
     setLogin((prevstate) => !prevstate);
@@ -23,4 +23,4 @@ const LoginPage = () => {
     </div>
   );
 };
-export default LoginPage;
+export default LoginSignButtonPage;
